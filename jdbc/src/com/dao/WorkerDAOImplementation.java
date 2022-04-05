@@ -80,8 +80,11 @@ public class WorkerDAOImplementation implements WorkerDAO
          String email = worker.getEmail();
          SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
          String joiningDate = sdf.format(date);
-         String query=String.format("update worker set worker_id=%d,first_name='%s',last_name='%s',salary='%d',joining_date='%s',department='%s',email='%s' where worker_id=%d",workerId,firstName,
-        		 lastName,salary,joiningDate,department,email);
+         String query=String.format("update worker set worker_id=%d,first_name='%s',last_name='%s',salary=%d,joining_date='%s',department='%s',mmmail='%s' where worker_id=%d",workerId,firstName,
+        		 lastName,salary,joiningDate,department,email,workerId);
+         Statement statement = connection.createStatement();
+             int res = statement.executeUpdate(query);
+             System.out.println(res + " row get Updated");
   	}
 
   	
